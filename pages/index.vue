@@ -91,7 +91,7 @@ export default {
 		async queryDictionary() {
 			if (this.query === null || this.query.trim() === '') return;
 			try {
-				const data = await this.$axios.$get('/api', { params: { define: this.query, lang:  this.getLanguageCode() } });
+				const data = await this.$axios.$get('https://googledictionaryapi.eu-gb.mybluemix.net', { params: { define: this.query, lang:  this.getLanguageCode() } });
 				this.result = Array.isArray(data) ? data[0] : data;
 			} catch(err) {
 				this.result = null;
