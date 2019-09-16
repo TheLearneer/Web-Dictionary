@@ -19,7 +19,7 @@ export default {
 		proxy: true
 	},
 	proxy: {
-		'/api/': { target: 'https://googledictionaryapi.eu-gb.mybluemix.net', pathRewrite: { '^/api/': '' } }
+		'/api': { target: 'https://googledictionaryapi.eu-gb.mybluemix.net', pathRewrite: { '^/api': '' } }
 	},
 	generate: {
 		fallback: '404.html'

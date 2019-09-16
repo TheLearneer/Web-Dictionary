@@ -49,9 +49,9 @@
 			<br>
 			
 			<b-tabs type="is-boxed" expanded>
-				<b-tab-item v-for="pos in parts" key=pos :label="toTitleCase(pos)">
+				<b-tab-item v-for="pos in parts" :key="pos" :label="toTitleCase(pos)">
 					<div class="section">
-						<ol id="pos">
+						<ol :id=pos>
 							<li v-for="entry in result.meaning[pos]">
 								<p><b>{{ entry.definition }}</b></p>
 								<p v-if="entry.example" class="mini">
@@ -91,7 +91,7 @@ export default {
 		async queryDictionary() {
 			if (this.query === null || this.query.trim() === '') return;
 			try {
-				const data = await this.$axios.$get('/api/', { params: { define: this.query, lang:  this.getLanguageCode() } });
+				const data = await this.$axios.$get('/api', { params: { define: this.query, lang:  this.getLanguageCode() } });
 				this.result = Array.isArray(data) ? data[0] : data;
 			} catch(err) {
 				this.result = null;
